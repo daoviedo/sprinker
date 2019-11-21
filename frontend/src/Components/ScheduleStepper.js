@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Days from './Days';
 import TimeSelect from './TimeSelect';
+import Duration from './Duration';
+import Valves from './Valves';
 
 export default function ScheduleStepper(props){
     const [activeStep, setActiveStep] = React.useState(0);
@@ -15,6 +17,10 @@ export default function ScheduleStepper(props){
                 return <Days state={props.state} handleChange={props.handleChange} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>;
             case 1:
                 return <TimeSelect time={props.state.startTime} handleDateChange={props.handleDateChange} back={() => setActiveStep(prevActiveStep => prevActiveStep - 1)} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>;
+            case 2:
+                return <Duration handleNumChange={props.handleNumChange} duration={props.state.duration} back={() => setActiveStep(prevActiveStep => prevActiveStep - 1)} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>
+            case 3:
+                return <Valves handleNumChange={props.handleNumChange} numValves={props.state.numValves} back={() => setActiveStep(prevActiveStep => prevActiveStep - 1)} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>
             default:
                 return <h1>Unknown Step</h1>
         }

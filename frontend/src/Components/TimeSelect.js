@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 
 export default function TimeSelect(props){
     return(
-        <div style={{textAlign: 'center'}}>
+        <div style={{textAlign: 'center', marginTop: 40}}>
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <KeyboardTimePicker
           margin="normal"
@@ -24,7 +24,7 @@ export default function TimeSelect(props){
           }}
         />
         </MuiPickersUtilsProvider>
-        <div style={{width: 140, margin: 'auto'}}>
+        <div style={{width: 140, margin: 'auto', marginTop: 30}}>
         <Grid item xs style={{margin: 'auto'}}>
                     <ButtonGroup variant="contained" fullWidth>
                         <Button onClick={props.back} color="primary">Back</Button>

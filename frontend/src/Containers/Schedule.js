@@ -14,7 +14,7 @@ class Schedule extends Component {
             sun: false,
             scheduleDays: [],
             startTime: null,
-            Duration: '',
+            duration: '',
             numValves: ''
         }
     }
@@ -24,10 +24,14 @@ class Schedule extends Component {
     handleDateChange = date => {
         this.setState({startTime: date})
     }
+    handleNumChange = name => event => {
+        this.setState({[name]: event.target.value});
+    }
     render() {
+        console.log(this.state.numValves)
         return (
             <div>
-                <ScheduleStepper handleDateChange={this.handleDateChange} handleChange={this.handleChange} state={this.state}/>
+                <ScheduleStepper handleNumChange={this.handleNumChange} handleDateChange={this.handleDateChange} handleChange={this.handleChange} state={this.state}/>
             </div>
         );
     }
