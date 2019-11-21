@@ -28,7 +28,6 @@ class Schedule extends Component {
         this.setState({[name]: event.target.value});
     }
     render() {
-        console.log(this.state.numValves)
         return (
             <div>
                 <ScheduleStepper handleNumChange={this.handleNumChange} handleDateChange={this.handleDateChange} handleChange={this.handleChange} state={this.state}/>
