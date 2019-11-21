@@ -18,7 +18,7 @@ export default function Valves(props){
         <Grid item xs style={{margin: 'auto'}}>
                     <ButtonGroup variant="contained" fullWidth>
                         <Button onClick={props.back} color="primary">Back</Button>
-                        <Button onClick={props.next} color="secondary">Finish</Button>
+                        <Button onClick={props.next} color="primary">Finish</Button>
                     </ButtonGroup>
         </Grid>
         </div>

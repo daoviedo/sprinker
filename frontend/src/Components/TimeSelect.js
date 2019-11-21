@@ -28,7 +28,7 @@ export default function TimeSelect(props){
         <Grid item xs style={{margin: 'auto'}}>
                     <ButtonGroup variant="contained" fullWidth>
                         <Button onClick={props.back} color="primary">Back</Button>
-                        <Button onClick={props.next} color="secondary">Next</Button>
+                        <Button onClick={props.next} color="primary">Next</Button>
                     </ButtonGroup>
         </Grid>
         </div>
