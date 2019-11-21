@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Manual from './Manual';
+import Schedule from './Schedule';
 
 const useStyles = makeStyles({
   root: {
@@ -24,7 +25,7 @@ export default function AllTabs() {
       case 0:
         return <h1>t1</h1>
       case 1:
-        return <h1>t2</h1>
+        return <Schedule/>
       case 2:
         return <Manual/>
       default:
