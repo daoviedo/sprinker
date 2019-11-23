@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { Typography } from '@material-ui/core';
-import Valves from '../Components/Valves';
 
 class Manual extends Component {
     constructor(props){
@@ -14,13 +13,13 @@ class Manual extends Component {
         }
     }
     turnOn(valve){
-        fetch('http://192.168.1.9:8080/on/' + valve,{
+        fetch('http://192.168.1.30:8080/on/' + valve,{
             method: "POST"
         })
         .then(res => console.log(res))
     }
     turnOff(valve){
-        fetch('http://192.168.1.9:8080/off/' + valve,{
+        fetch('http://192.168.1.30:8080/off/' + valve,{
             method: "POST"
         })
         .then(res => console.log(res))

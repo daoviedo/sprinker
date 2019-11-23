@@ -18,7 +18,7 @@ export default function ScheduleStepper(props){
             case 2:
                 return <Duration handleNumChange={props.handleNumChange} duration={props.state.duration} back={() => setActiveStep(prevActiveStep => prevActiveStep - 1)} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>
             case 3:
-                return <Valves handleNumChange={props.handleNumChange} numValves={props.state.numValves} back={() => setActiveStep(prevActiveStep => prevActiveStep - 1)} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>
+                return <Valves setSchedule={props.setSchedule} handleNumChange={props.handleNumChange} numValves={props.state.numValves} back={() => setActiveStep(prevActiveStep => prevActiveStep - 1)} next={() => setActiveStep(prevActiveStep => prevActiveStep + 1)}/>
             default:
                 return <h1>Unknown Step</h1>
         }

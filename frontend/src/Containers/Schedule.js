@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ScheduleStepper from '../Components/ScheduleStepper';
-import { Button } from '@material-ui/core';
+import DisplaySchedule from '../Components/DisplaySchedule';
 
 class Schedule extends Component {
     constructor(props){
@@ -16,11 +16,35 @@ class Schedule extends Component {
             scheduleDays: [],
             startTime: null,
             duration: '',
-            numValves: ''
+            numValves: '',
+            currentSchedule: null
         }
     }
+    componentDidMount(){
+        this.getSchedule();
+    }
+    delSchedule(){
+        fetch('http://192.168.1.30:8080/schedule/cancel', {
+            method: 'POST'
+        })
+        .then(this.setState({currentSchedule: 'none'}))
+    }
+    getSchedule(){
+        fetch('http://192.168.1.30:8080/schedule', {
+            method: 'GET'
+        })
+        .then(res => res.json())
+        .then(result => {
+            if(result.status === 500){
+                this.setState({currentSchedule: 'none'})
+            }
+            else{
+                this.setState({currentSchedule: result})
+            }
+        })
+    }
     setSchedule(){
-        fetch('http://192.168.1.9:8080/schedule', {
+        fetch('http://192.168.1.30:8080/schedule', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +56,7 @@ class Schedule extends Component {
                 stations: parseInt(this.state.numValves)
             })
         })
-        .then(result => console.log(result))
+        .then(() => this.getSchedule())
     }
     dayArray(){
         let tempArr = []
@@ -68,14 +92,20 @@ class Schedule extends Component {
     handleNumChange = name => event => {
         this.setState({[name]: event.target.value});
     }
+    renderSchedule(){
+        switch(this.state.currentSchedule){
+            case null:
+                return <div/>;
+            case 'none':
+                return <ScheduleStepper setSchedule={() => this.setSchedule()} handleNumChange={this.handleNumChange} handleDateChange={this.handleDateChange} handleChange={this.handleChange} state={this.state}/>;
+            default:
+                return <DisplaySchedule delSchedule={() => this.delSchedule()} displayData={this.state.currentSchedule}/>;
+        }
+    }
     render() {
-        console.log(this.state.scheduleDays)
-        const newDay = new Date();
-        console.log(newDay.toTimeString().split(" ")[0].substring(0,5))
         return (
-            <div>
-                <ScheduleStepper handleNumChange={this.handleNumChange} handleDateChange={this.handleDateChange} handleChange={this.handleChange} state={this.state}/>
-                <Button onClick={() => this.setSchedule()}>Test</Button>
+            <div>   
+                {this.renderSchedule()}
             </div>
         );
     }
