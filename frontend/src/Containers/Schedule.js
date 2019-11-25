@@ -24,13 +24,13 @@ class Schedule extends Component {
         this.getSchedule();
     }
     delSchedule(){
-        fetch('http://192.168.1.30:8080/schedule/cancel', {
+        fetch('http://localhost:8080/schedule/cancel', {
             method: 'POST'
         })
         .then(this.setState({currentSchedule: 'none'}))
     }
     getSchedule(){
-        fetch('http://192.168.1.30:8080/schedule', {
+        fetch('http://localhost:8080/schedule', {
             method: 'GET'
         })
         .then(res => res.json())
@@ -44,7 +44,7 @@ class Schedule extends Component {
         })
     }
     setSchedule(){
-        fetch('http://192.168.1.30:8080/schedule', {
+        fetch('http://localhost:8080/schedule', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

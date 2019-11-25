@@ -26,21 +26,21 @@ class Home extends Component {
         },1000)
     }
     getWeather(){
-        fetch('http://192.168.1.30:8080/weather', {
+        fetch('http://localhost:8080/weather', {
             method: 'GET'
         })
         .then(res => res.json())
         .then(result => this.setState({weather : result, loaded: true}))
     }
     checkMockStatus(){
-        fetch('http://192.168.1.30:8080/mockrain', {
+        fetch('http://localhost:8080/mockrain', {
             method: 'GET'
         })
         .then(res => res.json())
         .then(result => this.setState({mockrain: result}))
     }
     changeMockStatus(){
-        fetch('http://192.168.1.30:8080/mockrain', {
+        fetch('http://localhost:8080/mockrain', {
             method: 'POST'
         })
         .then(res => res.json())

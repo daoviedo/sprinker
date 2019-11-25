@@ -13,13 +13,13 @@ class Manual extends Component {
         }
     }
     turnOn(valve){
-        fetch('http://192.168.1.30:8080/on/' + valve,{
+        fetch('http://localhost:8080/on/' + valve,{
             method: "POST"
         })
         .then(res => console.log(res))
     }
     turnOff(valve){
-        fetch('http://192.168.1.30:8080/off/' + valve,{
+        fetch('http://localhost:8080/off/' + valve,{
             method: "POST"
         })
         .then(res => console.log(res))
